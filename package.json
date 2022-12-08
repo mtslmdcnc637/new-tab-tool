@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.20"
+  },
+  "name": "new-tab-tool",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mtslmdcnc637/new-tab-tool.git"
+  },
+  "keywords": ["tab", "new tab"],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mtslmdcnc637/new-tab-tool/issues"
+  },
+  "homepage": "https://github.com/mtslmdcnc637/new-tab-tool#readme",
+  "description": ""
+}
