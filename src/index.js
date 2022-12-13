@@ -4,8 +4,7 @@ const fs = require("fs");
 const app = express();
 const port = 3000;
 const router = express.Router();
-const axios = require("axios");
-require('dotenv').config();
+const mongoose = require("mongoose");
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -22,71 +21,105 @@ router.get("/on", (req, res) => {
 
 })
 
-router.post("/add", (req, res) => {
-    const{link} = req.body;
-    const userId = Math.random().toString(36).substr(2, 30);
-    const links = db();
-    const title = link.split("/")[2];
-    links.push({title, link, userId});
-    fs.writeFileSync('./data/links.json', JSON.stringify(links), 'utf-8');
-    res.redirect("/");
+
+
+
+
+router.get("/", (req, res) =>{
+    res.render("login.ejs");
+
 })
 
 
 
 
-router.get("/sendmail", (req, res) => { 
-    const user = process.env.user;
-    const pass = process.env.pass;
-    console.log(user);
-    console.log(pass);
-
-    const auth = {username: user, password: pass};
+router.post("/", (req, res) =>{
+    const {email, password} = req.body;
+    const user = process.env.userDB_user;
+    const pass = process.env.userDB_pass;
+    // Adicione o seguinte comando para desativar a mensagem de aviso
+    mongoose.set('strictQuery', false);
     
-    const config = {
-        method: 'post',
-        url: 'https://mail.zoho.com/api/accounts/1000.C8IMNYNU1VXNBM3IF5W6ZVABDH76HI/messages',
-        auth,
-        data: {
-            "fromAddress": "authentication@newtabtool.tech",
-            "toAddress": "mtslmdcnc637@gmail.com",
-            "subject": "Email - Always and Forever",
-            "content": "Email can never be dead. The most neutral and effective way, that can be used for one to many and two way communication.",
-            "askReceipt" : "yes",
-},
-    };
+    
+    const conection = mongoose.connect(`mongodb+srv://${user}:${pass}@cluster0.wx03ego.mongodb.net/?retryWrites=true&w=majority`, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 
-    axios(config)
-    .then(response =>{
-        //console.log(JSON.stringify(response.data));
-        console.log("feito")
-        res.send("email sent");
-    })
-    .catch(error => {
-        console.log(error);
-    });
+    if (conection){
+        console.log("conectado");
+    }
 
-
-//send email with axios
-////axios.post('https://mail.zoho.com/api/accounts/798051982/messages',{
-  
-   // "fromAddress": "authentication@newtabtool.tech",
-  //  "toAddress": "mtslmdcnc637@gmail.com",
- //   "ccAddress": "authentication@newtabtool.tech",
-   // "bccAddress": "authentication@newtabtool.tech",
- //   "subject": "Email - Always and Forever",
-   // "content": "Email can never be dead. The most neutral and effective way, that can be used for one to many and two way communication.",
-   // "askReceipt" : "yes",
-    //"encoding": "utf-8",
-    //"mailFormat": "html",
- 
-//})
-
-//res.send("email sent");
+    
 });
 
 
+router.get("/sendmail", async (req, res) =>{
+
+//const { email } = req.body;
+//const number = Math.random()*10;
+
+let transporter = nodemailer.createTransport({
+    host: 'smtp.zoho.com',
+    port: 465,
+    secure: true,
+    auth: {
+      user: 'authentication@newtabtool.tech',
+      pass: 'uMGqxxUxRwiB',
+    },
+    tls:{
+      ciphers: "SSLv3",
+      rejectUnauthorized: false,
+    }
+  });
+  const mailOptions = {
+    from: 'Autenticação - New Tab Tool <authentication@newtabtool.tech>', // sender address
+    to: 'mtslmdcnc637@gmail.com',
+    subject: 'auth', // Subject line
+    text: 'Autenticação',
+    html:'<p>test</p>', // plain text body
+   };
+
+   await transporter.sendMail({mailOptions});
+   console.log("enviado")
+  
+
+res.send({msg: "email enviado"})
+}) // fom do req res
+
+router.post("/add", (req, res) => {
+    const{link} = req.body;
+    const userId = Math.random().toString(36).substr(2, 30);
+    const links = db();
+    
+
+    const options = {
+      method: 'GET',
+      url: 'https://site-scrapper.p.rapidapi.com/fetchsitetitle',
+      params: {url: link},
+      headers: {
+        'X-RapidAPI-Key': '149c43278amsh91c50075c7d36eep11f161jsn59ba85274cc7',
+        'X-RapidAPI-Host': 'site-scrapper.p.rapidapi.com'
+      }
+    
+}
+    axios.request(options).then(function (response) {
+        const title = response.data;
+        links.push({title, link, userId});
+    fs.writeFileSync('./data/links.json', JSON.stringify(links), 'utf-8');
+    res.redirect("/");
+    }).catch(function (error) {
+       const title = link.split("/")[2];
+       links.push({title, link, userId});
+    fs.writeFileSync('./data/links.json', JSON.stringify(links), 'utf-8');
+    res.redirect("/");
+
+    });
 
 
+
+    
+})
+ 
 app.use(router)
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

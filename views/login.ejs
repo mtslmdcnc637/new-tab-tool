@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - New Tab Tool</title>
+    <style>
+        body{
+  background-color:#040404;
+  font-family:sans-serif;
+}
+  form {
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #599;
+    border-radius: 10px;
+    min-height:400px;
+    display:flex;
+    flex-direction: column
+  }
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-size:1.5rem;
+    width:100%;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+
+  input[type="submit"] {
+    display:block;
+    width:80%;
+    margin: 0 auto;
+    padding:1.2rem;
+    font-size:1.5rem;
+    border-radius:10px;
+    border:none;
+}
+form h1{
+  font-family: sans-serif;
+}
+form a{
+  font-size:1.3rem;
+  margin:1rem;
+  text-decoration:none;
+  width:100%;
+    display:block;
+  text-align:center;
+  
+}
+    
+
+    </style>
+</head>
+<body>
+    
+<form method="post" action="/">
+    <h1>Fazer login</h1>
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username"><br>
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password"><br><br>
+    <input type="submit" value="Submit">
+    <a href="/signup">Ou cadastre-se</a>
+    
+  </form>
+  
+</body>
+</html>
