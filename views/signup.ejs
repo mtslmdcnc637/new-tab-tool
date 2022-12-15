@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - New Tab Tool</title>
+    <title>Cadastro - New Tab Tool</title>
     <style>
         body{
   background-color:#040404;
@@ -28,7 +28,7 @@
     width:100%;
   }
 
-  input[type="email"],
+  input[type="text"],
   input[type="password"] {
     width: 100%;
     padding: 12px 20px;
@@ -66,14 +66,14 @@ form a{
 </head>
 <body>
     
-<form method="post" action="/auth/login">
-    <h1>Fazer login</h1>
+<form method="post" action="/auth/signup">
+    <h1>Cadastro - New Tab Tool</h1>
     <label for="email">Username:</label><br>
-    <input type="email" id="email" name="email" placeholder="Digite seu email"><br>
+    <input type="text" id="email" name="email"><br>
     <label for="password">Password:</label><br>
-    <input type="password" id="password" name="password" placeholder="Digite sua senha"><br><br>
+    <input type="password" id="password" name="password"><br><br>
     <input type="submit" value="Submit">
-    <a href="/auth/signup">Ou cadastre-se</a>
+    <a href="/auth/login">Ou cadastre-se</a>
     
   </form>
   

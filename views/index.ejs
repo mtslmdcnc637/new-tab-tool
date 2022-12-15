@@ -97,22 +97,30 @@
             font-size: 1.3rem;
             margin: 1rem 0;
         }
+        #logout {
+            position: absolute;
+            display: block;
+            width: 100%;
+            margin: 1rem auto;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
 
     </style>
 
 </head>
 <body>
     <div class="conteiner">
-        <form action="/add" method="post" class="form">
+        <form action="/add/shortcut" method="post" class="form">
             <input type="text" name="link" placeholder="Adicionar link" required>
             <button type="submit">+</button>
         </form>
         <!-- criando looping com os links -->
-        <% for (let i = 0; i < links.length; i++) { %>
-            <a href="<%= links[i].link %>" target="_blank">
+        <%  for (let i = 0; i < links.length; i++) { %>
+            <a href="<%= links[i].url %>" target="_blank">
                 <span class="card">
                     <h3 class="title"><%= links[i].title %></h3>
-                    <p class="name"><%= links[i].link %></p>
+                    <p class="name"><%= links[i].url %></p>
                 </span>
             </a>
         <% } %>
@@ -120,5 +128,6 @@
        
 
     </div>
+    <a href="/auth/logout" id="logout">Sair</a>
 </body>
 </html>
