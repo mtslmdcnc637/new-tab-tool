@@ -14,10 +14,10 @@ var parser = cookieParser(process.env.cookie_pass);
 app.use(parser);
 
 //importando todas as rotas --- ----- ---------------------------
-const homRoutes = require("./routes/homeRoutes");
-const userRoutes = require("./routes/userRoutes");
-const shortLinksRoutes = require("./routes/shortLinksRoutes");
-const shortcutRoutes = require("./routes/shortcutRoutes");
+const homRoutes = require("./src/routes/homeRoutes");
+const userRoutes = require("./src/routes/userRoutes");
+const shortLinksRoutes = require("./src/routes/shortLinksRoutes");
+const shortcutRoutes = require("./src/routes/shortcutRoutes");
 
 
 
