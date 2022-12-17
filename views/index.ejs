@@ -1,133 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Tab Tool</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,900;1,100;1,900&display=swap" rel="stylesheet">
     <style>
-        body {
-            background-color: #000;
-            color: #fff;
-            font-family: Arial, Helvetica, sans-serif;
+         @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,800;0,900;1,100;1,800;1,900&display=swap');
+        
+         :root {
+            --dark_bg: #000;
+            --green_bg: #048a81;
+            --grey: #e2e2e2;
+            --blue_bg: #3e92cc;
+
         }
-        *{
+
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: sans-serif;
+        }
+
+        body {
+            background-color: var(--dark_bg);
+            color:var(--grey);
+            font-family: 'Roboto', sans-serif;
+        }
+        header{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+            padding: 0 20px;
+            margin-bottom: 2rem;
+        }
+        .menu_options {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            width: 50%;
+        }
+        #logo{
+            color: var(--green_bg);
+            font-size: 1.5rem;
+            font-weight: bold;
             text-decoration: none;
         }
-        body{
-            background-color: #f4f4f4;
+        .menu_options a{
+            color: var(--blue_purple);
+            font-size: 1.2rem;
+            font-weight: 200;
+            text-decoration: none;
+            margin: 0 10px;
         }
-        .conteiner{
+        .hero{
+            width: 100vw;
             display: flex;
             flex-direction: row;
+            align-items: center;
+            justify-content: center;
             flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            align-content: center;
-
         }
-        .card{
-            width: 250px;
-            height: 150px;
-            padding: 2rem;
-            box-shadow: 0.1rem 0.5rem 1rem rgba(0,0,0,0.2);
-            display: grid;
-            place-content: center;
-            margin: 1vw;
-            text-align: center;
-            border-left: 1px solid #fff;
-            border-top: 2px solid #fff;
-            border-radius: 0.5rem;
-            background: rgba(255,255,255,0.2);
-        }
-        .name{
-            font-size: 1rem;
-            font-weight: 500;
-            color: var();
-
-        }
-        .form{
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            align-content: center;
-            margin: 2rem;
-            width: 100%;
-        }
-        .form>input{
+        #left{
             width: 50%;
-            min-width: 300px;
-            height: 40px;
-            padding: 0.5rem;
-            border: none;
-            border-radius: 0.5rem;
-            margin-right: 1rem;
-            font-size: 1.4rem;
-            font-weight: 500;
-            color: #414141;
+            padding: 2rem;
+            min-width: 500px;
         }
-        .form>button{
-            width: 50px;
-            height: 40px;
-            border: none;
-            border-radius: 0.5rem;
-            background-color: #99f;
-            color: #000;
-            font-size: 2.4rem;
-            font-weight: 500;
-            cursor: pointer;
+        #left h1{
+            font-size: 6.5rem;
+            font-weight: 800;
+            color: var(--green_bg);
         }
-        .name {
-            max-width: 220px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            font-size: 1rem;
-        }
-        .title {
-            max-width: 220px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            font-size: 1.3rem;
+        #left h2{
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--blue_bg);
             margin: 1rem 0;
         }
-        #logout {
-            position: absolute;
-            display: block;
-            width: 100%;
-            margin: 1rem auto;
-            font-size: 1.5rem;
-            cursor: pointer;
+        #left p{
+            font-size: 1.6rem;
+            font-weight: 100;
+            color: var(--grey);
+            margin: 1rem 0;
         }
-
+        #right{
+            width: 50%;
+            min-width: 500px;
+            height: 500px;
+            background-color: var(--green_bg);
+            padding: 2rem;
+            background-image: url("../assets/pexels-cottonbro-cg-studio-8833427.jpg");
+            background-size: cover;
+            background-position: bottom;
+            border-radius: 75% 25% 70% 30% / 42% 53% 47% 58% ;
+            
+        }
+        #login, #signup{
+            width: 40%;
+            min-width: 220px;
+            padding: 1rem;
+            font-size: 1.5rem;
+            color: var(--grey);
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            float: left;
+            text-align: center;
+            margin: 0 0.9rem 0.2rem 0;
+            border-radius: 0.7rem;
+            
+        }
+        #login{
+            background-color: var(--blue_bg);
+        }
+        #signup{
+            background-color: var(--green_bg);
+        }
+        @media screen and (max-width: 700px){
+            #left{
+                width: 90%;
+                min-width: 0;
+                padding: 2rem 1rem;
+            }
+            #right{
+                width: 90%;
+                min-width: 0;
+                height: 300px;
+                border-radius: 0;
+            }
+            #login, #signup{
+                width: 90%;
+                min-width: 0;
+                margin: 0.5rem 0;
+            }
+            #logo{
+                display: none;
+            }
+            .menu_options{
+                width: 100%;
+            }
+        }
     </style>
-
 </head>
+
 <body>
     <div class="conteiner">
-        <form action="/add/shortcut" method="post" class="form">
-            <input type="text" name="link" placeholder="Adicionar link" required>
-            <button type="submit">+</button>
-        </form>
-        <!-- criando looping com os links -->
-        <%  for (let i = 0; i < links.length; i++) { %>
-            <a href="<%= links[i].url %>" target="_blank">
-                <span class="card">
-                    <h3 class="title"><%= links[i].title %></h3>
-                    <p class="name"><%= links[i].url %></p>
-                </span>
-            </a>
-        <% } %>
+        <header>
+            <a href="" id="logo">New Tab Tool</a>
+            <span class="menu_options">
+                <a href="">Favoritar esta guia</a>
+                <a href="">Tornar esta guia padrão para nova guia</a>
+                <a href="">Baixar extenção</a>
+            </span>
 
-       
-
+        </header>
+        <div class="hero">
+            <div id="left">
+                <h1>New Tab Tool</h1>
+                <h2>Dê um upgrade na funcionalidade da sua nova guia</h2>
+                <p>New Tab Tool é uma ferramenta que te permite salvar links de sites e postagens, tudo isso com login e senha, então funciona independente do navegador em que voce estiver, é só fazer login e usar.</p>
+                <a href="/auth/signup" id="signup">Signup</a>
+                <a href="/auth/login" id="login">Login</a>
+            </div>
+            <div id="right"></div>
+        </div>
     </div>
-    <a href="/auth/logout" id="logout">Sair</a>
 </body>
+
 </html>

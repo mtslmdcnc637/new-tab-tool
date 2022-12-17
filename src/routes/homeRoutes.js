@@ -10,9 +10,9 @@ router.get("/", async (req, res) => {
     const links = await shortcut.find({email: email});
 
     if(!email) {
-        return res.redirect("/auth/login");
+        return res.redirect("/");
     }
-    res.render("index.ejs", {links: links});
+    res.render("home.ejs", {links: links});
     
 
 })

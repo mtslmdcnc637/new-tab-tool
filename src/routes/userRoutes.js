@@ -9,7 +9,7 @@ router.get("/login", (req, res) => {
     const emailCookie = req.cookies.email;
     console.log(emailCookie);
     if(emailCookie) {
-        return res.redirect("/");
+        return res.redirect("/home");
     }
     res.render("login.ejs");
 });
@@ -30,7 +30,7 @@ router.post("/login", async (req, res) => {
         
     // Set cookie with expiration date in the future
         await res.cookie('email', email, { expires: new Date(2023, 1, 1), httpOnly: true });
-        res.status(200).redirect("/");
+        res.status(200).redirect("/home");
     } catch (error) {
         res.status(500).send({ error: error+"aqui" });
     }
@@ -42,7 +42,7 @@ router.post("/login", async (req, res) => {
 router.get("/", (req, res) => {
     const email = req.cookies.email;
     if(email) {
-        return res.render("index.ejs");
+        return res.render("home.ejs");
     }
     res.render("login.ejs");
 });
@@ -71,7 +71,7 @@ router.post("/signup", async (req, res) => {
     try {
         await userModels.create(userData);
         res.cookie('email', JSON.stringify(email), { expires: new Date(2023, 1, 1), httpOnly: true });
-        res.status(201).redirect("/");
+        res.status(201).redirect("/home");
     } catch (error) {
         res.status(500).send({ error: error });
     }

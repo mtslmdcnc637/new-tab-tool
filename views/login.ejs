@@ -1,81 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - New Tab Tool</title>
+<html>
+  <head>
+    <title>Página de Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,900;1,100;1,900&display=swap" rel="stylesheet">
     <style>
-        body{
-  background-color:#040404;
-  font-family:sans-serif;
+         @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,800;0,900;1,100;1,800;1,900&display=swap');
+        
+         :root {
+            --dark_bg: #000;
+            --green_bg: #048a81;
+            --grey: #e2e2e2;
+            --blue_bg: #3e92cc;
+
+        }
+      body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--dark_bg);
 }
-  form {
-    width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #599;
-    border-radius: 10px;
-    min-height:400px;
-    display:flex;
-    flex-direction: column
-  }
 
-  label {
-    display: block;
-    margin-bottom: 8px;
-    font-size:1.5rem;
-    width:100%;
-  }
-
-  input[type="email"],
-  input[type="password"] {
+.container {
+  width: 350px;
+  margin: 0 auto;
+  background-color: var(--green_bg);
+  border-radius: 5px;
+  padding: 20px;
+  position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+form{
     width: 100%;
-    padding: 12px 20px;
-    margin-bottom: 20px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-  }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+input{
+    width: 90%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    display: block;
 
-  input[type="submit"] {
-    display:block;
-    width:80%;
-    margin: 0 auto;
-    padding:1.2rem;
-    font-size:1.5rem;
-    border-radius:10px;
-    border:none;
 }
-form h1{
-  font-family: sans-serif;
+.container h1{
+    color: var(--grey);
+    font-size: 2rem;
+    margin-bottom: 20px;
 }
-form a{
-  font-size:1.3rem;
-  margin:1rem;
-  text-decoration:none;
-  width:100%;
-    display:block;
-  text-align:center;
-  
+.btn{
+    width: 90%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    display: block;
+    background-color: var(--blue_bg);
+    color:var(--grey);
+    font-weight: 900;
 }
-    
+#alter{
+    color: var(--grey);
+    font-size: 1.2rem;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+
 
     </style>
-</head>
-<body>
-    
-<form method="post" action="/auth/login">
-    <h1>Fazer login</h1>
-    <label for="email">Username:</label><br>
-    <input type="email" id="email" name="email" placeholder="Digite seu email"><br>
-    <label for="password">Password:</label><br>
-    <input type="password" id="password" name="password" placeholder="Digite sua senha"><br><br>
-    <input type="submit" value="Submit">
-    <a href="/auth/signup">Ou cadastre-se</a>
-    
-  </form>
-  
-</body>
+  </head>
+  <body>
+    <div class="container">
+      <h1>New Tab Tool - login</h1>
+      <form action="/auth/login" method="post">
+        <input type="email" id="email" name="email" class="form-control" placeholder="Digite seu email"><br>
+        <input type="password" id="senha" name="senha" class="form-control" placeholder="senha"><br><br>
+        <button type="submit" class="btn">Login</button>
+        <a href="/auth/signup" id="alter">Ou Cadastre-se</a>
+      </form> 
+    </div>
+  </body>
 </html>

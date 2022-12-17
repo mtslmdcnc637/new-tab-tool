@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Tab Tool</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+            text-decoration: none;
+        }
+        body{
+            background-color: #f4f4f4;
+        }
+        .conteiner{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+
+        }
+        .card{
+            width: 250px;
+            height: 150px;
+            padding: 2rem;
+            box-shadow: 0.1rem 0.5rem 1rem rgba(0,0,0,0.2);
+            display: grid;
+            place-content: center;
+            margin: 1vw;
+            text-align: center;
+            border-left: 1px solid #fff;
+            border-top: 2px solid #fff;
+            border-radius: 0.5rem;
+            background: rgba(255,255,255,0.2);
+        }
+        .name{
+            font-size: 1rem;
+            font-weight: 500;
+            color: var();
+
+        }
+        .form{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            margin: 2rem;
+            width: 100%;
+        }
+        .form>input{
+            width: 50%;
+            min-width: 300px;
+            height: 40px;
+            padding: 0.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            margin-right: 1rem;
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #414141;
+        }
+        .form>button{
+            width: 50px;
+            height: 40px;
+            border: none;
+            border-radius: 0.5rem;
+            background-color: #99f;
+            color: #000;
+            font-size: 2.4rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        .name {
+            max-width: 220px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: 1rem;
+        }
+        .title {
+            max-width: 220px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: 1.3rem;
+            margin: 1rem 0;
+        }
+        #logout {
+            position: absolute;
+            display: block;
+            width: 100%;
+            margin: 1rem auto;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="conteiner">
+        <form action="/add/shortcut" method="post" class="form">
+            <input type="text" name="link" placeholder="Adicionar link" required>
+            <button type="submit">+</button>
+        </form>
+        <!-- criando looping com os links -->
+        <%  for (let i = 0; i < links.length; i++) { %>
+            <a href="<%= links[i].url %>" target="_blank">
+                <span class="card">
+                    <h3 class="title"><%= links[i].title %></h3>
+                    <p class="name"><%= links[i].url %></p>
+                </span>
+            </a>
+        <% } %>
+
+       
+
+    </div>
+    <a href="/auth/logout" id="logout">Sair</a>
+</body>
+</html>

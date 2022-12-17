@@ -13,13 +13,13 @@ app.use(express.json());
 var parser = cookieParser(process.env.cookie_pass);
 app.use(parser);
 
+
 //importando todas as rotas --- ----- ---------------------------
 const homRoutes = require("./src/routes/homeRoutes");
 const userRoutes = require("./src/routes/userRoutes");
 const shortLinksRoutes = require("./src/routes/shortLinksRoutes");
 const shortcutRoutes = require("./src/routes/shortcutRoutes");
-
-
+const initialRoutes = require("./src/routes/initialRoutes")
 
 
 //terminando de importar todas as rotas ----------------------------
@@ -39,8 +39,9 @@ conection();
 
 
 app.use("/auth", userRoutes);
-app.use("/", homRoutes);
+app.use("/home", homRoutes);
 app.use("/add", shortcutRoutes);
+app.use("/", initialRoutes)
 
 
 
