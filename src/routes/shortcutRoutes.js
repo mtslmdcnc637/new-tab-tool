@@ -10,6 +10,18 @@ router.post("/shortcut", async (req, res) => {
     const user_email = req.cookies.email;
     const { link:url } = req.body;
 
+    function getRandomColor() {
+        // Gera números aleatórios entre 0 e 255 para cada canal de cor
+        var r = Math.floor(Math.random() * 256);
+        var g = Math.floor(Math.random() * 256);
+        var b = Math.floor(Math.random() * 256);
+      
+        // Constrói e retorna uma string de cor RGB
+        return "rgb(" + r + ", " + g + ", " + b + ")";
+      }
+      const bgColor = getRandomColor();
+      
+
 
     const options = {
         method: 'GET',
@@ -21,15 +33,18 @@ router.post("/shortcut", async (req, res) => {
         }
 
     };
-
-    await axios.request(options).then(function (response) {
-        const title = response.data;
-        const linkData = { url, title, user_email };
+    
+    await axios.request(options).then(async function (response) {
+        var title = await response.data;
+        if(!title){
+            title = "";
+        }
+        const linkData = { url, title, user_email, bgColor };
         try {
-            shortcutModels.create(linkData);
-            res.redirect("/");
+            await shortcutModels.create(linkData);
+            res.redirect("/home");
         } catch (error) {
-            res.status(500).send({ error: error + "erro na requisição do titulo" });
+            res.status(500).send({ error: error.data + "erro na requisição do titulo" });
         }
     })
 

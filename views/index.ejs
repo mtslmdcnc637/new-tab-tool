@@ -147,6 +147,20 @@
             }
         }
     </style>
+    <script>
+        function addToFavorites() {
+  // Obtém a URL atual e o título da página
+  var url = window.location.href;
+  var title = document.title;
+
+  // Adiciona a guia atual aos favoritos
+  window.sidebar.addPanel(title, url, "");
+
+}
+
+
+
+    </script>
 </head>
 
 <body>
@@ -154,8 +168,8 @@
         <header>
             <a href="" id="logo">New Tab Tool</a>
             <span class="menu_options">
-                <a href="">Favoritar esta guia</a>
-                <a href="">Tornar esta guia padrão para nova guia</a>
+                <a href="" onclick="addToFavorites()" >Favoritar esta guia</a>
+                <a href="https://support.google.com/chrome/answer/95314?hl=pt-BR&co=GENIE.Platform%3DDesktop#:~:text=Escolher%20a%20página%20inicial&text=No%20computador%2C%20abra%20o%20Chrome.,-No%20canto%20superior&text=clique%20em%20Mais-,Configurações.,guia%20ou%20uma%20página%20personalizada." onclick="setAsHomepage()" target="_blank">Tornar esta guia padrão para nova guia</a>
                 <a href="">Baixar extenção</a>
             </span>
 

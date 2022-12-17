@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Tab Tool</title>
     <style>
+        :root{
+            --bgColor: #f4f4f4;
+        }
         body {
-            background-color: #000;
-            color: #fff;
+            
             font-family: Arial, Helvetica, sans-serif;
         }
         *{
@@ -42,7 +44,7 @@
             border-left: 1px solid #fff;
             border-top: 2px solid #fff;
             border-radius: 0.5rem;
-            background: rgba(255,255,255,0.2);
+            background: var(--bgColor);
         }
         .name{
             font-size: 1rem;
@@ -118,7 +120,7 @@
         <!-- criando looping com os links -->
         <%  for (let i = 0; i < links.length; i++) { %>
             <a href="<%= links[i].url %>" target="_blank">
-                <span class="card">
+                <span class="card" style="--bgColor: <%= links[i].bgColor %>;">
                     <h3 class="title"><%= links[i].title %></h3>
                     <p class="name"><%= links[i].url %></p>
                 </span>

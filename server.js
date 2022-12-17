@@ -38,6 +38,7 @@ async function conection(){
 conection();
 
 
+
 app.use("/auth", userRoutes);
 app.use("/home", homRoutes);
 app.use("/add", shortcutRoutes);

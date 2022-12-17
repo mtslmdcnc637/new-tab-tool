@@ -3,7 +3,8 @@ const { Schema } = mongoose;
 const shortcutSchema = new Schema({
     url: { type: String, required: true },
     title: { type: String, required: true },
-    user_email: { type: String, required: true }
+    user_email: { type: String, required: true },
+    bgColor: { type: String, require: true }
 },
     { timestamps: true}
 );

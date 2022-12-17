@@ -9,3 +9,4 @@ const shortLinksSchema = new Schema({
 );
 const Shortlink = mongoose.model('Shortcut', shortLinksSchema);
 module.exports = Shortlink;
+
