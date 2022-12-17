@@ -58,7 +58,6 @@ router.get("/signup", (req, res) => {
 });
 
 
-
 router.post("/signup", async (req, res) => {
 
     const { email, password } = req.body;
