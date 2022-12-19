@@ -7,6 +7,7 @@ const localStorage = new LocalStorage("./scratch");
 const login = require("../middleware/login");
 
 router.post("/shortcut", login, async (req, res) => {
+  var title = "Titulo não encontrado";
   const user_id = req.user._id;
   const { link: url } = req.body;
 
@@ -32,10 +33,10 @@ router.post("/shortcut", login, async (req, res) => {
   };
   try {
     await axios.request(options).then(async function (response) {
-      var title = await response.data;
+       title = await response.data;
     });
   } catch (error) {
-    var title = " ";
+    
     
   }
 

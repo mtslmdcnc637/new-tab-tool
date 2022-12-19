@@ -28,6 +28,7 @@ router.post("/login", async (req, res) => {
       });
     }
     
+
     await bcrypt.compare(password, user.password, (err, result) => {
       if (err) {
         return res.status(401).redirect("/");
