@@ -5,6 +5,8 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
+
+
 //se for uma requisição get /login ele exibe o formulario de login
 router.get("/login", (req, res) => {
   return res.render("login.ejs", { notice: "", colorSet: "" });
@@ -25,6 +27,7 @@ router.post("/login", async (req, res) => {
           "background-color:orange; padding:0.2rem; border:1px solid red;",
       });
     }
+    
     await bcrypt.compare(password, user.password, (err, result) => {
       if (err) {
         return res.status(401).redirect("/");
