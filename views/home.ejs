@@ -1,29 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Tab Tool</title>
     <style>
-        :root{
+        :root {
             --bgColor: #f4f4f4;
         }
+
         body {
-            
+
             font-family: Arial, Helvetica, sans-serif;
         }
-        *{
+
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: sans-serif;
             text-decoration: none;
         }
-        body{
+
+        body {
             background-color: #f4f4f4;
         }
-        .conteiner{
+
+        .conteiner {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
@@ -32,11 +37,12 @@
             align-content: center;
 
         }
-        .card{
+
+        .card {
             width: 250px;
             height: 150px;
             padding: 2rem;
-            box-shadow: 0.1rem 0.5rem 1rem rgba(0,0,0,0.2);
+            box-shadow: 0.1rem 0.5rem 1rem rgba(0, 0, 0, 0.2);
             display: grid;
             place-content: center;
             margin: 1vw;
@@ -46,13 +52,15 @@
             border-radius: 0.5rem;
             background: var(--bgColor);
         }
-        .name{
+
+        .name {
             font-size: 1rem;
             font-weight: 500;
             color: var();
 
         }
-        .form{
+
+        .form {
             display: flex;
             flex-direction: row;
             justify-content: center;
@@ -61,7 +69,8 @@
             margin: 2rem;
             width: 100%;
         }
-        .form>input{
+
+        .form>input {
             width: 50%;
             min-width: 300px;
             height: 40px;
@@ -73,7 +82,8 @@
             font-weight: 500;
             color: #414141;
         }
-        .form>button{
+
+        .form>button {
             width: 50px;
             height: 40px;
             border: none;
@@ -84,6 +94,7 @@
             font-weight: 500;
             cursor: pointer;
         }
+
         .name {
             max-width: 220px;
             overflow: hidden;
@@ -91,6 +102,7 @@
             white-space: nowrap;
             font-size: 1rem;
         }
+
         .title {
             max-width: 220px;
             overflow: hidden;
@@ -99,6 +111,7 @@
             font-size: 1.3rem;
             margin: 1rem 0;
         }
+
         #logout {
             position: absolute;
             display: block;
@@ -108,28 +121,68 @@
             cursor: pointer;
         }
 
+        .ads {
+            width: 100vw;
+        }
+
+        @media (max-width: 600px) {
+            *{
+                padding: 0;
+                margin: 0;
+            }
+            .conteiner{
+                width:100vw;
+            }
+            .form{
+                width: 100%;
+                flex-direction: column;
+            }
+            .form {
+                width: 95vw;
+            }
+
+            .form>input,
+            .form>button {
+                display: block;
+                width: 100%;
+            }
+
+        }
     </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7278646739489876"
+        crossorigin="anonymous"></script>
 
 </head>
+
 <body>
     <div class="conteiner">
         <form action="/add/shortcut" method="post" class="form">
             <input type="text" name="link" placeholder="Adicionar link" required>
             <button type="submit">+</button>
         </form>
+        <div class="ads">
+            <script async
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7278646739489876"
+                crossorigin="anonymous"></script>
+        </div>
         <!-- criando looping com os links -->
-        <%  for (let i = 0; i < links.length; i++) { %>
+        <% for (let i=0; i < links.length; i++) { %>
             <a href="<%= links[i].url %>" target="_blank">
                 <span class="card" style="--bgColor: <%= links[i].bgColor %>;">
-                    <h3 class="title"><%= links[i].title %></h3>
-                    <p class="name"><%= links[i].url %></p>
+                    <h3 class="title">
+                        <%= links[i].title %>
+                    </h3>
+                    <p class="name">
+                        <%= links[i].url %>
+                    </p>
                 </span>
             </a>
-        <% } %>
+            <% } %>
 
-       
+
 
     </div>
     <a href="/auth/logout" id="logout">Sair</a>
 </body>
+
 </html>

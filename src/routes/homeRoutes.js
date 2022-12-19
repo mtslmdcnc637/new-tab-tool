@@ -3,17 +3,15 @@ const bodyParser = require("body-parser");
 const LocalStorage = require('node-localstorage').LocalStorage;
 const localStorage = new LocalStorage('./scratch');
 const shortcut = require('../../models/shortcutModels');
+const login = require("../middleware/login");
 
-router.get("/", async (req, res) => {
+router.get("/", login, async (req, res, next) => {
 
-    const email = req.cookies.email;
-    const links = await shortcut.find({email: email});
+    const id = req.user._id;
 
-    if(!email) {
-        return res.redirect("/auth/login");
-    }
-    res.render("home.ejs", {links: links});
-    
+    const links = await shortcut.find({user_id: id})
+    res.status(200).render("home.ejs", {links: links});
+    next();
 
 })
 

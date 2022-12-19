@@ -10,8 +10,7 @@ require("dotenv").config();
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
-var parser = cookieParser(process.env.cookie_pass);
-app.use(parser);
+app.use(cookieParser())
 
 
 //importando todas as rotas --- ----- ---------------------------

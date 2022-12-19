@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Página de Login</title>
+    <title>Cadastro</title>
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,900;1,100;1,900&display=swap" rel="stylesheet">
     <style>
          @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,800;0,900;1,100;1,800;1,900&display=swap');
@@ -74,7 +74,15 @@ input{
     text-decoration: none;
     margin-top: 10px;
 }
-
+.notice{
+  width: 90%;
+  border-radius: 0.4rem;
+  margin:0.5rem;
+  text-align: center;
+}
+.note{
+  color:#fff;
+}
 
 
     </style>
@@ -82,12 +90,19 @@ input{
   <body>
     <div class="container">
       <h1>New Tab Tool - cadastro</h1>
+      <span class="notice" style="<%= colorSet %>" ><h4><%= notice %></h4></span>
       <form action="/auth/signup" method="post">
-        <input type="email" id="email" name="email" class="form-control" placeholder="Digite seu email"><br>
-        <input type="password" id="password" name="password" class="form-control" placeholder="senha"><br><br>
+        <input type="email" id="email" name="email" class="form-control" placeholder="Digite seu email">
+        <input type="password" id="password" name="password" class="form-control" placeholder="senha">
+        <input type="password" id="passConfirm" name="passConfirm" class="form-control" placeholder="Confirme sua senha">
+        <ul class="note">
+          <li>A senha deve ter pelo menos 8 caracteres</li>
+          <li>A senha e confirmação de senha devem ser exatamente iguais</li>
+        </ul>
         <button type="submit" class="btn">Cadastrar</button>
         <a href="/auth/login" id="alter">Ou faça login</a>
       </form> 
+      
     </div>
   </body>
 </html>

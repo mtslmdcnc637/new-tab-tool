@@ -73,6 +73,12 @@ input{
     text-decoration: none;
     margin-top: 10px;
 }
+.notice{
+  width: 100%;
+  border-radius: 0.4rem;
+  margin:0.5rem;
+  text-align: center;
+}
 
 
 
@@ -81,6 +87,7 @@ input{
   <body>
     <div class="container">
       <h1>New Tab Tool - login</h1>
+      <span class="notice" style="<%= colorSet %>" ><h4><%= notice %></h4></span>
       <form action="/auth/login" method="post">
         <input type="email" id="email" name="email" class="form-control" placeholder="Digite seu email"><br>
         <input type="password" id="password" name="password" class="form-control" placeholder="senha"><br><br>
