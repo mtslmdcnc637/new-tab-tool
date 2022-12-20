@@ -20,7 +20,7 @@ const userRoutes = require("./src/routes/userRoutes");
 const shortLinksRoutes = require("./src/routes/shortLinksRoutes");
 const shortcutRoutes = require("./src/routes/shortcutRoutes");
 const initialRoutes = require("./src/routes/initialRoutes")
-
+const deleteRoutes = require("./src/routes/deleteRoutes")
 
 //terminando de importar todas as rotas ----------------------------
 
@@ -42,7 +42,8 @@ conection();
 app.use("/auth", userRoutes);
 app.use("/home", homRoutes);
 app.use("/add", shortcutRoutes);
-app.use("/", initialRoutes)
+app.use("/", initialRoutes);
+app.use("/delete", deleteRoutes);
 
 
 //Client ID:

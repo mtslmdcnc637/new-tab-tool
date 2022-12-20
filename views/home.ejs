@@ -35,6 +35,7 @@
 
         .conteiner {
             display: flex;
+            pointer-events: fixed;
             flex-direction: row;
             flex-wrap: wrap;
             justify-content: center;
@@ -56,6 +57,7 @@
             border-top: 2px solid #fff;
             border-radius: 0.5rem;
             background: var(--bgColor);
+            position: relative;
         }
 
         .name {
@@ -105,7 +107,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
 
         .title {
@@ -113,8 +115,9 @@
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             margin: 1rem 0;
+            letter-spacing: -0.1rem;
         }
 
         #logout {
@@ -130,7 +133,7 @@
             width: 100vw;
         }
         #logout{
-            position:absolute;
+            position:fixed;
             bottom: 10px;
             left: 10px;
             font-size:1rem;
@@ -140,8 +143,25 @@
             text-decoration: none;
             color:black;
         }
+        .delete{
+            
+            padding: 0.5rem 4rem;
+            color: #fff;
+            background-color: #f00;
+        }
+        .conteiner-card{
+            display: flex;
+            flex-direction:column;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+        .conteiner-card .delete{
+            transform: translateY(-4.1rem);
+        }
+        
 
-        @media (max-width: 600px) {
+        @media (max-width: 650px) {
             *{
                 padding: 0;
                 margin: 0;
@@ -168,7 +188,37 @@
                 margin:5px auto
             }
 
-        }
+            
+
+        
+
+            body{
+                scroll-padding-bottom: 6rem;
+            }
+            .conteiner{
+                padding-bottom: 5rem;
+            }
+  .form {
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    z-index: 999;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    min-width: none;
+    background-color: var(--bgColor);
+    padding: 0;
+  }
+  .form>input {
+    width: 85%;
+    margin: 5px;
+  }
+    .form>button {
+        width: 10%;
+        margin: 0;
+    }
+}
+
     </style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7278646739489876"
         crossorigin="anonymous"></script>
@@ -186,8 +236,10 @@
                 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7278646739489876"
                 crossorigin="anonymous"></script>
         </div>
+        
         <!-- criando looping com os links -->
         <% for (let i=0; i < links.length; i++) { %>
+            <div class="conteiner-card">
             <a href="<%= links[i].url %>" target="_blank">
                 <span class="card" style="--bgColor: <%= links[i].bgColor %>;">
                     <h3 class="title">
@@ -196,8 +248,10 @@
                     <p class="name">
                         <%= links[i].url %>
                     </p>
+                    
                 </span>
             </a>
+            <a href="/delete/shortcut/<%= links[i]._id %>" class="delete">Excluir</a></div>
             <% } %>
 
 

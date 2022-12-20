@@ -4,7 +4,6 @@ const shortcutSchema = new Schema({
     url: { type: String, required: true },
     title: { type: String, required: true },
     user_id: { type: String, required: true },
-    image_url: { type: String, required: true },
     bgColor: { type: String, require: true }
 },
     { timestamps: true}
