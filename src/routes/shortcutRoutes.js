@@ -6,10 +6,16 @@ const LocalStorage = require("node-localstorage").LocalStorage;
 const localStorage = new LocalStorage("./scratch");
 const login = require("../middleware/login");
 
+
 router.post("/shortcut", login, async (req, res) => {
-  var title = "Titulo não encontrado";
   const user_id = req.user._id;
   const { link: url } = req.body;
+  var title = "/";
+
+
+  if (!url.startsWith("https://")) {
+    url = "https://" + url;
+  }
 
   function getRandomColor() {
     // Gera números aleatórios entre 0 e 255 para cada canal de cor
@@ -22,34 +28,27 @@ router.post("/shortcut", login, async (req, res) => {
   }
   const bgColor = getRandomColor();
 
-  const options = {
-    method: "GET",
-    url: "https://site-scrapper.p.rapidapi.com/fetchsitetitle",
-    params: { url: url },
-    headers: {
-      "X-RapidAPI-Key": "149c43278amsh91c50075c7d36eep11f161jsn59ba85274cc7",
-      "X-RapidAPI-Host": "site-scrapper.p.rapidapi.com",
-    },
-  };
-  try {
-    await axios.request(options).then(async function (response) {
-       title = await response.data;
-    });
-  } catch (error) {
-    
-    
-  }
 
+
+  try {
+    const page = await axios.get(url);
+    const urlString = JSON.stringify(page.data);
+    //console.log(urlString)
+    title = urlString.match(/<title>(.*?)<\/title>/)[1];
+  } catch (error) {
+    //console.log(error)
+    title = "/";
+  }
+  //console.log(title);
+  //console.log(typeof(title))
   const linkData = { url, title, user_id, bgColor };
-  console.log(linkData)
+  //console.log(linkData);
   try {
     await shortcutModels.create(linkData);
     res.redirect("/home");
   } catch (error) {
-    console.log(error)
-    res
-      .status(500)
-      .send({ error: error.data + "erro no cadastro do link" });
+    console.log(error);
+    res.status(500).send({ error: error.data + "erro no cadastro do link" });
   }
 });
 module.exports = router;

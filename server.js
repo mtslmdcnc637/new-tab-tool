@@ -13,6 +13,7 @@ app.use(express.json());
 app.use(cookieParser())
 
 
+
 //importando todas as rotas --- ----- ---------------------------
 const homRoutes = require("./src/routes/homeRoutes");
 const userRoutes = require("./src/routes/userRoutes");
@@ -44,15 +45,17 @@ app.use("/add", shortcutRoutes);
 app.use("/", initialRoutes)
 
 
+//Client ID:
+//b928612743378b2
+//Client secret:
+//b5e030128935d1f60cdbb8533dcd1a390f990303
 
 
-router.post("/add", (req, res) => {
+
+router.post("/img",  (req, res) => {
    
-
-
-
-    
-})
+  });
+  
  
 app.use(router)
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

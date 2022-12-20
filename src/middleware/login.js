@@ -6,8 +6,9 @@ require("dotenv").config();
 
 module.exports = async (req, res, next) =>{
         const token = req.cookies.token;
-        console.log(token);
-        
+        //console.log(token);
+      
+    
         if (!token) {
           return res.status(401).send({ error: 'No token provided' });
         }
@@ -17,13 +18,14 @@ module.exports = async (req, res, next) =>{
           const decoded = jwt.verify(token, process.env.cookie_pass);
           if(decoded){
           const _id = decoded._id;
-      
+       
           // Check if the user exists in the database
           const user = await userModels.findOne({_id : _id});
           if (!user) {
             return res.status(401).send({ error: 'Invalid token' });
           }
       
+        
           // The user is authenticated, so you can proceed with the request -----------
           req.user = user;
           next();
