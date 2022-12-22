@@ -1,0 +1,12 @@
+const router = require("express").Router();
+const loginExtension = require("../middleware/loginExtension");
+const shortcutModels = require("../../models/shortcutModels");
+const bodyParser = require("body-parser");
+
+router.get("/add/shortcut", (req, res) => {
+  res.status(401).json({error : "Não autorizado"});
+})
+
+
+
+module.exports = router;

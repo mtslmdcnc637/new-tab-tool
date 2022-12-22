@@ -1,7 +1,5 @@
 const router = require("express").Router();
 const bodyParser = require("body-parser");
-const LocalStorage = require('node-localstorage').LocalStorage;
-const localStorage = new LocalStorage('./scratch');
 const shortcut = require('../../models/shortcutModels');
 const login = require("../middleware/login");
 
@@ -16,4 +14,4 @@ router.get("/", login, async (req, res, next) => {
 })
 
 
-    module.exports = router;
+module.exports = router;

@@ -8,6 +8,7 @@ router.get("/shortcut/:id", login, async (req, res) => {
 
   const { id } = req.params;
   //console.log(id);    
+  
   try {
     await shortcutModels.findOneAndDelete({ _id: id, user_id: user_id  });
     res.redirect("/home");

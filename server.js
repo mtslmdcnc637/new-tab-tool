@@ -15,12 +15,13 @@ app.use(cookieParser())
 
 
 //importando todas as rotas --- ----- ---------------------------
-const homRoutes = require("./src/routes/homeRoutes");
-const userRoutes = require("./src/routes/userRoutes");
-const shortLinksRoutes = require("./src/routes/shortLinksRoutes");
-const shortcutRoutes = require("./src/routes/shortcutRoutes");
-const initialRoutes = require("./src/routes/initialRoutes")
-const deleteRoutes = require("./src/routes/deleteRoutes")
+const homRoutes =           require("./src/routes/homeRoutes");
+const userRoutes =          require("./src/routes/userRoutes");
+const shortLinksRoutes =    require("./src/routes/shortLinksRoutes");
+const shortcutRoutes =      require("./src/routes/shortcutRoutes");
+const initialRoutes =       require("./src/routes/initialRoutes");
+const deleteRoutes =        require("./src/routes/deleteRoutes");
+
 
 //terminando de importar todas as rotas ----------------------------
 
@@ -39,6 +40,8 @@ conection();
 
 
 
+
+
 app.use("/auth", userRoutes);
 app.use("/home", homRoutes);
 app.use("/add", shortcutRoutes);
@@ -52,10 +55,6 @@ app.use("/delete", deleteRoutes);
 //b5e030128935d1f60cdbb8533dcd1a390f990303
 
 
-
-router.post("/img",  (req, res) => {
-   
-  });
   
  
 app.use(router)
