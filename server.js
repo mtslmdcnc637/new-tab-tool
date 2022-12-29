@@ -43,9 +43,9 @@ conection();
 
 
 app.use("/auth", userRoutes);
-app.use("/home", homRoutes);
+app.use("/", homRoutes);
 app.use("/add", shortcutRoutes);
-app.use("/", initialRoutes);
+app.use("/home", initialRoutes);
 app.use("/delete", deleteRoutes);
 
 

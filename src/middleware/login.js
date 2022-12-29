@@ -22,7 +22,11 @@ module.exports = async (req, res, next) =>{
           // Check if the user exists in the database
           const user = await userModels.findOne({_id : _id});
           if (!user) {
-            return res.status(401).send({ error: 'Invalid token' });
+            return res.render("login.ejs", {
+              notice: "Faça login para acessar essa página",
+              colorSet:
+                "background-color:orange; padding:0.2rem; border:1px solid red;",
+            });
           }
       
         
