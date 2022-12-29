@@ -25,7 +25,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "dev": "nodemon ./src/index.js",
+    "dev": "nodemon -e html,js,ejs,json ./src/index.js",
     "web": "npm start"
   },
   "repository": {

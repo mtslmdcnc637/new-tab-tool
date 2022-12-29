@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/svg+xml" href="/src/assets/favicon.svg">
     <title>New Tab Tool</title>
     <style>
         :root {
             --bgColor: #f4f4f4;
+
         }
 
         body {
@@ -28,9 +30,9 @@
             background-color: #f4f4f4;
             background-image: url("https://i.imgur.com/FUosmp0.jpg");
             background-size: cover;
-            background-attachment: fixed ;
+            background-attachment: fixed;
             background-position: center;
-            
+
         }
 
         .conteiner {
@@ -132,96 +134,74 @@
         .ads {
             width: 100vw;
         }
-        #logout{
-            position:fixed;
+
+        #logout {
+            position: fixed;
             bottom: 10px;
             left: 10px;
-            font-size:1rem;
-            
+            font-size: 1rem;
+
         }
-        a{
+
+        a {
             text-decoration: none;
-            color:black;
+            color: black;
         }
-        .delete{
+
+        .delete {
             width: 100%;
             padding: 0.5rem 4rem;
             color: #fff;
             background-color: #f00;
         }
-        .conteiner-card{
+
+        .conteiner-card {
             display: flex;
-            flex-direction:column;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 0;
         }
-        .conteiner-card .delete{
+
+        .delete {
             transform: translateY(-20%);
             border-radius: 0 0 0.5rem 0.5rem;
             text-align: center;
             border-left: 1px solid fff;
         }
-        
 
-        @media (max-width: 650px) {
-            *{
+
+        @media screen and (max-width: 650px) {
+            * {
                 padding: 0;
                 margin: 0;
             }
-            .conteiner{
-                width:100vw;
+            .conteiner-card{
+                width:90vw;
+                display:flex;
+                flex-direction:row;
+                gap:0;
             }
-            .form{
-                width: 100%;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                margin:0;
+            .card{
+                display: block;
+                width:80vw;
+                height: auto;
+                margin:1rem 0;
                 padding: 0.5rem;
             }
-            .form {
-                width: 95vw;
+            .card h3, .card p{
+                width:100%;
+                text-align:start;
             }
-
-            .form>input,
-            .form>button {
+            .delete{
+                margin:0;
                 display: block;
-                width: 100%;
-                margin:5px auto
+                width:10vw;
+                border-radius: 0;
+                padding: 0.1rem;
             }
 
-            
-
-        
-
-            body{
-                scroll-padding-bottom: 6rem;
-            }
-            .conteiner{
-                padding-bottom: 5rem;
-            }
-  .form {
-    position: fixed;
-    bottom: 0;
-    width: 100vw;
-    z-index: 999;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    min-width: none;
-    background-color: var(--bgColor);
-    padding: 0;
-  }
-  .form>input {
-    width: 85%;
-    margin: 5px;
-  }
-    .form>button {
-        width: 10%;
-        margin: 0;
-    }
-}
-
+        }
     </style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7278646739489876"
         crossorigin="anonymous"></script>
@@ -239,22 +219,27 @@
                 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7278646739489876"
                 crossorigin="anonymous"></script>
         </div>
-        
+
         <!-- criando looping com os links -->
         <% for (let i=0; i < links.length; i++) { %>
             <div class="conteiner-card">
-            <a href="<%= links[i].url %>" target="_blank">
-                <span class="card" style="--bgColor: <%= links[i].bgColor %>;">
-                    <h3 class="title">
-                        <%= links[i].title %>
-                    </h3>
-                    <p class="name">
-                        <%= links[i].url %>
-                    </p>
-                    
-                </span>
-            </a>
-            <a href="/delete/shortcut/<%= links[i]._id %>" class="delete">Excluir</a></div>
+                <a href="<%= links[i].url %>" target="_blank">
+                    <span class="card" style="--bgColor: <%= links[i].bgColor %>;">
+                        <h3 class="title">
+                            <%= links[i].title %>
+                        </h3>
+                        <p class="name">
+                            <%= links[i].url %>
+                        </p>
+
+                    </span>
+                </a>
+                <a href="/delete/shortcut/<%= links[i]._id %>" class="delete"><svg xmlns="http://www.w3.org/2000/svg"
+                        width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
+                    </svg></a>
+            </div>
             <% } %>
 
 

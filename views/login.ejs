@@ -1,126 +1,129 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Página de Login</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,900;1,100;1,900&display=swap" rel="stylesheet">
-    <style>
-         @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,800;0,900;1,100;1,800;1,900&display=swap');
-        
-         :root {
-            --dark_bg: #000;
-            --green_bg: #048a81;
-            --grey: #e2e2e2;
-            --blue_bg: #3e92cc;
 
-        }
-      body {
-  font-family: 'Roboto', sans-serif;
-  background-color: var(--dark_bg);
-  background-image: url("https://i.imgur.com/kym7SVe.jpg");
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
-}
+<head>
+  <title>Página de Login</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="image/svg+xml" href="/src/assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,900;1,100;1,900&display=swap"
+    rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,800;0,900;1,100;1,800;1,900&display=swap');
 
-.container {
-  width: 350px;
-  margin: 0 auto;
-  background-color: var(--green_bg);
-  border-radius: 5px;
-  padding: 20px;
-  position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-form{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-input{
-    width: 90%;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    font-size: 1.2rem;
-    display: block;
+    :root {
+      --dark_bg: #000;
+      --green_bg: #048a81;
+      --grey: #e2e2e2;
+      --blue_bg: #3e92cc;
 
-}
-.container h1{
-    color: var(--grey);
-    font-size: 2rem;
-    margin-bottom: 20px;
-}
-.btn{
-    width: 90%;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    font-size: 1.2rem;
-    display: block;
-    background-color: var(--blue_bg);
-    color:var(--grey);
-    font-weight: 900;
-}
-#alter{
-    color: var(--grey);
-    font-size: 1.2rem;
-    text-decoration: none;
-    margin-top: 10px;
-}
-.notice{
-  width: 100%;
-  border-radius: 0.4rem;
-  margin:0.5rem;
-  text-align: center;
-}
-@media screen and (max-width: 650px) {
-  .container {
-    width: 90vw;
-  }
-  .form{
-    width: 100%;
-    font-size: 1.6rem;
-  }
-  input {
-    width: 100%;
-    font-size: 1.6rem;
-  }
-  
-  h1 {
-    font-size: 1.5rem;
-  }
-  #alter {
-    font-size: 1.6rem;
-  }
-  .btn{
-    font-size: 1.6rem;
-  }
-}
+    }
 
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--dark_bg);
+      background-image: url("https://i.imgur.com/kym7SVe.jpg");
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      width: 100vw;
+      display: grid;
+      place-items: center;
+      height: 100vh;
+      overflow: hidden;
 
+    }
 
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <h1>New Tab Tool - login</h1>
-      <span class="notice" style="<%= colorSet %>" ><h4><%= notice %></h4></span>
-      <form action="/auth/login" method="post">
-        <input type="email" id="email" name="email" class="form-control" placeholder="Digite seu email"><br>
-        <input type="password" id="password" name="password" class="form-control" placeholder="senha"><br><br>
-        <button type="submit" class="btn">Login</button>
-        <a href="/auth/signup" id="alter">Ou Cadastre-se</a>
-      </form> 
-    </div>
-  </body>
+    .container {
+      width: 350px;
+      margin: 0 auto;
+      background-color: var(--green_bg);
+      border-radius: 5px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+      display: block;
+
+    }
+
+    .container h1 {
+      color: var(--grey);
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      width: 90%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+      display: block;
+      background-color: var(--blue_bg);
+      color: var(--grey);
+      font-weight: 900;
+    }
+
+    #alter {
+      color: var(--grey);
+      font-size: 1.2rem;
+      text-decoration: none;
+      margin-top: 10px;
+    }
+
+    .notice {
+      width: 100%;
+      border-radius: 0.4rem;
+      margin: 0.5rem;
+      text-align: center;
+    }
+    @media screen and (max-width: 650px) {
+      .container {
+        width: 80vw;
+      }
+    }
+      
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>New Tab Tool - login</h1>
+    <span class="notice" style="color: <%= colorSet %>">
+      <h4>
+        <%= notice %>
+      </h4>
+    </span>
+    <form action="/auth/login" method="post">
+      <input type="email" id="email" name="email" class="form-control" placeholder="Digite seu email"><br>
+      <input type="password" id="password" name="password" class="form-control" placeholder="senha"><br><br>
+      <button type="submit" class="btn">Login</button>
+      <a href="/auth/signup" id="alter">Ou Cadastre-se</a>
+    </form>
+  </div>
+</body>
+
 </html>
