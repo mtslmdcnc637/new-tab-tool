@@ -16,7 +16,7 @@ router.get("/login", (req, res) => {
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
-    return res.status(400).send({ error: "Missing email or password" });
+    return res.status(400).render("login.ejs", { notice: "todos os campos são obrigatórios", colorSet: "background-color:orange; padding:0.2rem; border:1px solid red;" });
   }
   try {
     const user = await userModels.findOne({ email: email });
@@ -53,10 +53,10 @@ router.post("/login", async (req, res) => {
           // Set the cookie to be accessible only to the server (not by JavaScript)
           httpOnly: true,
         });
-        return res.status(200).redirect("/home");
+        return res.status(200).redirect("/");
         // console.log("Resposta enviada!");
       }
-      return res.status(401).render("signup.ejs", {
+      return res.status(401).render("login.ejs", {
         notice: "Falha no login, verifique os dados",
         colorSet:
           "background-color:orange; padding:0.2rem; border:1px solid red;",
@@ -80,7 +80,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/logout", (req, res) => {
-  res.clearCookie("email");
+  res.clearCookie("token");
   res.redirect("/auth/login");
 });
 
@@ -119,7 +119,11 @@ router.post("/signup", async (req, res) => {
   }
 
   if (typeof email !== "string" || typeof hash !== "string") {
-    return res.status(400).send({ error: "Invalid email or password" });
+    return res.status(400).render("signup.ejs", {
+      notice: "Verifique os dados",
+      colorSet:
+        "background-color:orange; padding:0.2rem; border:1px solid red;",
+    });
   }
 
   if (hash != passConfirm) {
@@ -159,7 +163,7 @@ router.post("/signup", async (req, res) => {
       return res.status(200).send({ token }).redirect("/home");
     });
   } catch (error) {
-    return res.status(400).send({ error: error });
+    return res.status(400).send({ error: "houve um erro inesperado, por favor tente novamente mais tarde" });
   }
 });
 module.exports = router;

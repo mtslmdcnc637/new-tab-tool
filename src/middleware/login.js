@@ -10,7 +10,11 @@ module.exports = async (req, res, next) =>{
       
     
         if (!token) {
-          return res.status(401).send({ error: 'No token provided' });
+          return res.status(401).res.render("login.ejs", {
+            notice: "Faça login para acessar essa página",
+            colorSet:
+              "background-color:orange; padding:0.2rem; border:1px solid red;",
+          });
         }
       
         // Verify the token and get the user ID from the payload
