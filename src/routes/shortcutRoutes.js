@@ -100,7 +100,7 @@ router.post("/shortcut", login, async (req, res) => {
   //console.log(linkData);
   try {
     await shortcutModels.create(linkData);
-    res.redirect("/home");
+    res.redirect("/");
   } catch (error) {
     console.log(error);
     res.status(500).send({ error: error.data + "erro no cadastro do link" });
