@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const bodyParser = require("body-parser");
-const shortcurModel = require('../../models/shortcurModels');
+const shortcurModel = require('../../models/shortcutModels');
 const login = require("../middleware/login");
 
 router.get("/", login, async (req, res, next) => {
